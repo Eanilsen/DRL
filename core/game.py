@@ -19,10 +19,11 @@ class Game(object):
             elif c == curses.KEY_DOWN: y += 1
             elif c == curses.KEY_LEFT: x -= 1
             elif c == curses.KEY_RIGHT: x += 1
+            elif c == ord('q'): running = False
 
             if c != -1:
                 stdscr.clear()
-                stdscr.addch(5, 5, '@')
+                stdscr.addch(y, x, '@')
 
     # Runs an interactive session of our game with the player.
     def play(self):
@@ -31,6 +32,7 @@ class Game(object):
         stdscr = curses.initscr()
         curses.noecho()
         curses.cbreak()
+        curses.curs_set(0)
         stdscr.keypad(1)
         stdscr.timeout(0)
         stdscr.nodelay(1)
