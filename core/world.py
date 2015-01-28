@@ -51,6 +51,15 @@ def direction(x, y, d):
     if d < 0 or d > 5: return None
     else: return ring(x, y, 1)[d]
 
+# The arc method takes a list of tuples containing "start_degree, end_degree"
+# pairs. It returns the sublist of a complete ring that fits within the starts
+# and ends.
+def arc(x, y, r, endpoints):
+    r = ring(x, y, r)
+    report = []
+    for (st, en) in endpoints:
+
+    return report
 #
 def fov(x, y, r):
     report = [(x, y)]
@@ -108,7 +117,8 @@ class World(object):
     # Draws the world.
     def draw(self):
         graphics.clear()
-        my_fov = fov(self.player.x, self.player.y, 3)
+        my_fov = fov(self.player.x, self.player.y, 6)
+
         for y in range(self.h):
             odd = True if y % 2 == 1 else False
 
